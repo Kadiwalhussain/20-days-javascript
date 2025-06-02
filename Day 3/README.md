@@ -26,4 +26,11 @@ A simple web application that calculates student grades based on input marks.
 
 1. Enter the student's marks (0-100)
 2. Click "Calculate Grade" button
-3. View the calculated grade and result 
+3. View the calculated grade and result
+
+
+## Output Video
+
+
+https://github.com/user-attachments/assets/aa13d24a-88bd-4d1c-b947-190605a7cfe0
+
