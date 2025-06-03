@@ -46,3 +46,6 @@ The application features a clean, modern interface with:
 - Weight range: 30-150 kg
 - Color-coded health status indicators
 - History of last 10 calculations 
+
+https://github.com/user-attachments/assets/7544b481-8a65-41dd-a5f5-a92fc84160a6
+
