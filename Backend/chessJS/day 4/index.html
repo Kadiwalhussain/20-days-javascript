@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Health Checker</title>
+    <link rel ="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Health Checker</h1>
+        <div class="calculator">
+            <div class="input-group">
+                <label for="height">Height (cm)</label>
+                <input type="range" id="height" min="100" max="220" value="170" step="1">
+                <span id="height-value">170 cm</span>
+            </div>
+            <div class="input-group">
+                <label for="weight">weight (kg)</label>
+                <input type="range" id="weight" min="30" max="150" value="65" step="1">
+                <span id="weight-value"> 65 kg</span>
+            </div>
+            <button id="calculate"> Calculate BMI</button>
+
+            <div id="result" class="result">
+                <p> Your BMI will appear hear</p>
+            </div>
+        </div>
+        <div class="history"> 
+            <h2>History</h2>
+            <div class="history-list"></div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+
+    
+</body>
+</html>
