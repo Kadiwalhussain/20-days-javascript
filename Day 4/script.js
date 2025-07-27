@@ -61,6 +61,14 @@ function updateHistoryDisplay() {
     `).join('');
 }
 
+
+
+
+
+
+
+
+
 // Calculate button click handler
 calculateBtn.addEventListener('click', () => {
     const height = parseInt(heightSlider.value);
