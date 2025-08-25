@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript HTML Integration Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .console-note {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Integration Demo</h1>
+    <p>This page demonstrates proper HTML structure with JavaScript integration.</p>
+
+    <div class="console-note">
+        <strong>📋 Instructions:</strong> Open Developer Tools (F12) and check the Console tab to see JavaScript output.
+    </div>
+
+    <script>
+        // This script runs when the page loads
+        console.log("=== Practice Exercise 1.2: HTML Integration ===");
+
+        // Basic "Hello World" as specified in exercise
+        console.log("hello world!");
+
+        // Additional demonstrations of concepts from text
+        console.log("Page loaded at:", new Date().toISOString());
+
+        // Show different data types as JavaScript handles them
+        const welcomeMessage = "Welcome to JavaScript HTML integration!";
+        const pageLoadTime = performance.now(); // Browser API for timing
+        const isJavaScriptEnabled = true;
+
+        console.log("Message:", welcomeMessage);
+        console.log("Load time (ms):", Math.round(pageLoadTime));
+        console.log("JavaScript enabled:", isJavaScriptEnabled);
+
+        // Demonstrate error handling for robust code
+        try {
+            console.log("Document title:", document.title);
+            console.log("Document URL:", document.URL);
+        } catch (error) {
+            console.error("Error accessing document properties:", error.message);
+        }
+
+        // Show completion message
+        console.log("✅ HTML Integration exercise completed successfully!");
+    </script>
+</body>
+</html>
