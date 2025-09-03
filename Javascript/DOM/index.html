@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .red {
+        color: white; /* text color */
+        font-weight: bold;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="output"></div>
+
+    <script>
+      // Step 1: Select the element
+      const output = document.querySelector(".output");
+
+      // Step 2: Update text content
+      output.textContent = "Hello, I am updated content!";
+
+      // Step 3: Add a new class
+      output.classList.add("red");
+
+      // Step 4: Update the id
+      output.id = "tester";
+
+      // Step 5: Change background color
+      output.style.backgroundColor = "red";
+    </script>
+  </body>
+</html>
