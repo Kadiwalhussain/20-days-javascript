@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Schedule - November 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            color: #3730a3;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+        }
+
+        .exam-card {
+            position: relative;
+            margin: 30px 0;
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: both;
+        }
+
+        .exam-card:nth-child(1) { animation-delay: 0.1s; }
+        .exam-card:nth-child(2) { animation-delay: 0.2s; }
+        .exam-card:nth-child(3) { animation-delay: 0.3s; }
+        .exam-card:nth-child(4) { animation-delay: 0.4s; }
+        .exam-card:nth-child(5) { animation-delay: 0.5s; }
+        .exam-card:nth-child(6) { animation-delay: 0.6s; }
+        .exam-card:nth-child(7) { animation-delay: 0.7s; }
+
+        .exam-content {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: calc(50% - 40px);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exam-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .exam-card:nth-child(odd) .exam-content {
+            margin-left: 0;
+        }
+
+        .exam-card:nth-child(even) .exam-content {
+            margin-left: auto;
+        }
+
+        .date-badge {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+            top: 50%;
+            margin-top: -20px;
+            white-space: nowrap;
+        }
+
+        .course-code {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .course-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .exam-time {
+            color: #666;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .time-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .optional-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .exam-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .date-badge {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+
+        .countdown {
+            text-align: center;
+            color: white;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        /* Syllabus table styles */
+        .syllabus-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+            font-size: 0.95em;
+        }
+        .syllabus-table th,
+        .syllabus-table td {
+            border: 1px solid #eee;
+            padding: 8px 10px;
+            vertical-align: top;
+        }
+        .syllabus-table th {
+            background: #f7f7f7;
+            color: #333;
+            text-align: left;
+        }
+        details.syllabus summary {
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        .view-syllabus-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back to Courses</a>
+    <div class="container">
+        <header>
+            <h1>📚 Exam Schedule</h1>
+            <p class="subtitle">November 2025 | Computer Science Department</p>
+        </header>
+
+        <div class="countdown" id="countdown"></div>
+
+        <div class="timeline">
+            <div class="exam-card">
+                <div class="date-badge">Wed, Nov 12</div>
+                <div class="exam-content">
+                    <span class="course-code">31921</span>
+                    <div class="course-title">Theoretical Computer Science</div>
+                    <div class="exam-time">
+                        <svg class="time-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        2:30 PM - 5:30 PM
+                    </div>
+                    <a class="view-syllabus-btn" href="project/tcs_syllabus.html" target="_blank" rel="noopener">Open full syllabus (new page)</a>
+                </div>
+            </div>
+
+            <div class="exam-card">
+                <div class="date-badge">Thu, Nov 13</div>
+                <div class="exam-content">
+                    <span class="course-code">31922</span>
+                    <div class="course-title">Software Engineering</div>
+                    <div class="exam-time">
+                        <svg class="time-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        2:30 PM - 5:30 PM
+                    </div>
+                    <a class="view-syllabus-btn" href="project/se_syllabus.html" target="_blank" rel="noopener">Open full syllabus (new page)</a>
+                </div>
+            </div>
+
+            <div class="exam-card">
+                <div class="date-badge">Mon, Nov 17</div>
+                <div class="exam-content">
+                    <span class="course-code">31923</span>
+                    <div class="course-title">Computer Network</div>
+                    <div class="exam-time">
+                        <svg class="time-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        2:30 PM - 5:30 PM
+                    </div>
+                    <a class="view-syllabus-btn" href="project/cn_syllabus.html" target="_blank" rel="noopener">Open full syllabus (new page)</a>
+                </div>
+            </div>
+
+            <div class="exam-card">
+                <div class="date-badge">Wed, Nov 19</div>
+                <div class="exam-content">
+                    <span class="course-code">31924</span>
+                    <div class="course-title">Data Warehousing & Mining</div>
+                    <div class="exam-time">
+                        <svg class="time-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        2:30 PM - 5:30 PM
+                    </div>
+                    <a class="view-syllabus-btn" href="project/dwm_syllabus.html" target="_blank" rel="noopener">Open full syllabus (new page)</a>
+                </div>
+            </div>
+
+            <div class="exam-card">
+                <div class="date-badge">Fri, Nov 21</div>
+                <div class="exam-content">
+                    <span class="course-code">31925</span>
+                    <span class="optional-badge">OPTIONAL</span>
+                    <div class="course-title">Probabilistic Graphical Models</div>
+                    <div class="exam-time">
+                        <svg class="time-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        2:30 PM - 5:30 PM
+                    </div>
+                    <a class="view-syllabus-btn" href="project/pgm_syllabus.html" target="_blank" rel="noopener">Open full syllabus (new page)</a>
+                </div>
+            </div>
+
+            <div class="exam-card">
+                <div class="date-badge">Fri, Nov 21</div>
+                <div class="exam-content">
+                    <span class="course-code">31926</span>
+                    <span class="optional-badge">OPTIONAL</span>
+                    <div class="course-title">Internet Programming</div>
+                    <div class="exam-time">
+                        <svg class="time-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        2:30 PM - 5:30 PM
+                    </div>
+                    <a class="view-syllabus-btn" href="project/ip_syllabus.html" target="_blank" rel="noopener">Open full syllabus (new page)</a>
+                </div>
+            </div>
+
+            <div class="exam-card">
+                <div class="date-badge">Fri, Nov 21</div>
+                <div class="exam-content">
+                    <span class="course-code">31927</span>
+                    <span class="optional-badge">OPTIONAL</span>
+                    <div class="course-title">Advance Database Management System</div>
+                    <div class="exam-time">
+                        <svg class="time-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        2:30 PM - 5:30 PM
+                    </div>
+                    <a class="view-syllabus-btn" href="project/adbms_syllabus.html" target="_blank" rel="noopener">Open full syllabus (new page)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const firstExam = new Date('2025-11-12T14:30:00');
+            const diff = firstExam - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('countdown').innerHTML = 
+                    `⏰ First exam starts in: <strong>${days}</strong> days, <strong>${hours}</strong> hours, <strong>${minutes}</strong> minutes`;
+            } else {
+                document.getElementById('countdown').innerHTML = '🎯 Exam period is ongoing or completed!';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+    </script>
+</body>
+</html>

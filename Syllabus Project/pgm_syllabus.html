@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Probabilistic Graphical Models - Syllabus</title>
+  <style>body{font-family:Inter,system-ui,Arial;padding:28px;background:#f7fbff;color:#071233}.card{max-width:980px;margin:0 auto;background:#fff;padding:24px;border-radius:12px}.controls{display:flex;gap:8px;margin-bottom:10px}button{background:#eef2ff;border:1px solid #e0e7ff;padding:8px 12px;border-radius:9px}.module{margin-bottom:16px}ul{list-style:none;padding:0;margin-top:8px}li{padding:12px;border-radius:10px;border:1px solid #eef2ff;margin-bottom:8px;background:#fff}label{display:flex;gap:12px;align-items:flex-start}</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Probabilistic Graphical Models <span class="badge">Syllabus</span></h1>
+    <p>Checklist for Probabilistic Graphical Models.</p>
+    <div class="controls"><button id="markAll">Mark all</button><button id="clearAll">Clear all</button><button id="export">Export</button><button id="import">Import</button><input id="importFile" type="file" accept="application/json" style="display:none"/></div>
+    <div id="syllabusList"></div>
+    <a href="../exam_schedule_web.html">← Back to Exam Schedule</a>
+  </div>
+  <script>
+    const MODULES=[
+      {id:'pgm1',title:'1 Introduction to Probabilistic Graphical Modeling',hrs:5,topics:['Probability Theory basics','Random Variables and Joint Distributions','Independence and Conditional Independence','Continuous Spaces','Expectation and Variances','Introduction to Graphs: Nodes, Edges, Paths','Bayesian Network, Markov Model, Hidden Markov Model','Applications of PGM']},
+      {id:'pgm2',title:'2 Bayesian Network Model and Inference',hrs:10,topics:['Directed Graph Model: Bayesian Network','Naive Bayes Model','Reasoning Patterns','Basic Independencies in Bayesian Networks','Bayesian Network Semantics','Modelling: Picking variables, structure, probabilities','Local Probabilistic Models: Tabular CPDs, Deterministic CPDs, Context Specific CPDs','Exact inference variable elimination: Variable Elimination, Conditioning']},
+      {id:'pgm3',title:'3 Markov Network Model and Inference',hrs:8,topics:['Undirected Graph Model: Markov Network','Gibbs distribution','Parameterization of Markov Network','Independencies','Exact inference variable elimination']},
+      {id:'pgm4',title:'4 Hidden Markov Model and Inference',hrs:6,topics:['Temporal models','Template variables and factors','Directed and Undirected representations','Structural uncertainty']},
+      {id:'pgm5',title:'5 Learning and Decisions',hrs:6,topics:['Learning graphical models','Density estimation','MLE for Bayesian Networks','Causality: Conditioning and Intervention','Utilities and Decisions']},
+      {id:'pgm6',title:'6 Applications',hrs:4,topics:['Bayesian Networks: Classification, Forecasting','Markov Models: Cost Effectiveness Analysis','HMM: Speech Recognition, POS Tagging, Bioinformatics']}
+    ];
+    const STORAGE_KEY='pgm_syllabus_v1';
+    function build(){const c=document.getElementById('syllabusList');MODULES.forEach(mod=>{const s=document.createElement('section');s.className='module';s.innerHTML=`<h3>${mod.title} (${String(mod.hrs).padStart(2,'0')} hrs)</h3>`;const ul=document.createElement('ul');mod.topics.forEach((t,i)=>{const id=`${mod.id}.t${i+1}`;const li=document.createElement('li');li.innerHTML=`<label><input data-id="${id}" type="checkbox"> <div><strong>${t.split(/[:\-–—]/)[0]}</strong><div style="color:#475569">${t}</div></div></label>`;ul.appendChild(li)});s.appendChild(ul);c.appendChild(s)})}
+    function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(e){return{}}}
+    function save(s){localStorage.setItem(STORAGE_KEY,JSON.stringify(s))}
+    build();const inputs=Array.from(document.querySelectorAll('#syllabusList input[type=checkbox]'));const state=load();inputs.forEach(i=>{const id=i.dataset.id;if(state[id])i.checked=true;i.addEventListener('change',()=>{const s=load();s[id]=i.checked;save(s)})});
+    document.getElementById('markAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=true;s[i.dataset.id]=true});save(s)});
+    document.getElementById('clearAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=false;s[i.dataset.id]=false});save(s)});
+    document.getElementById('export').addEventListener('click',()=>{const s=load();const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='pgm_progress.json';a.click();URL.revokeObjectURL(url)});
+    document.getElementById('import').addEventListener('click',()=>document.getElementById('importFile').click());
+    document.getElementById('importFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result);localStorage.setItem(STORAGE_KEY,JSON.stringify(obj));location.reload()}catch(err){alert('Invalid JSON')}};r.readAsText(f)});
+  </script>
+</body>
+</html>
