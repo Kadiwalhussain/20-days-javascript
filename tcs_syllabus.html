@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theoretical Computer Science - Syllabus</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+        body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding: 36px; background: linear-gradient(180deg,#f6f8ff,#f4f6fb); color: #0f172a; }
+        .card { max-width: 980px; margin: 0 auto; background: white; padding: 28px; border-radius: 14px; box-shadow: 0 18px 50px rgba(14,30,60,0.08); }
+        h1 { margin-bottom: 6px; font-family: 'Playfair Display', serif; font-size: 28px; }
+        h2 { font-size: 18px; margin: 10px 0; color: #0b1220; }
+        .meta { color: #475569; margin-bottom: 14px; }
+        .note { margin-top: 6px; color: #475569; font-size: 0.97em }
+        .module { margin-bottom: 12px; }
+        #syllabusList ul { list-style: none; padding-left: 0; margin-top: 6px; }
+        #syllabusList li { padding: 8px 12px; border-radius: 8px; margin-bottom: 6px; background: linear-gradient(180deg,#ffffff,#fbfdff); border: 1px solid #eef3ff; display:flex; align-items:flex-start; }
+        #syllabusList label { cursor: pointer; display:flex; gap:12px; align-items:flex-start; font-size: 15px; }
+        input[type=checkbox] { appearance: none; width: 20px; height: 20px; border-radius: 6px; border: 2px solid #c7d2fe; background: white; margin-top: 2px; display:inline-block; }
+        input[type=checkbox]:checked { background: linear-gradient(135deg,#6d28d9,#7c3aed); border-color: transparent; box-shadow: 0 6px 18px rgba(124,58,237,0.25), inset 0 -2px 0 rgba(0,0,0,0.06); }
+        input[type=checkbox]:checked::after { content: '✔'; display:block; color: white; font-size: 12px; text-align:center; margin-top:1px; }
+        .badge { display: inline-block; background: #10b981; color: white; padding: 6px 12px; border-radius: 999px; font-weight: 700; margin-left: 10px; font-size: 0.9em; }
+        .controls { margin-top: 8px; }
+        .controls button { background: #eef2ff; border: 1px solid #e0e7ff; color: #3730a3; padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight:600 }
+        .controls button:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(99,102,241,0.06); }
+        .back { display: inline-block; margin-top: 18px; color: #334155; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Theoretical Computer Science</h1>
+        <div class="meta">Course Code: <strong>31921</strong> <span class="badge">Syllabus</span></div>
+
+        <p class="note">This page contains the full syllabus presented as a spacious checklist. Long topic lines are split into subtopics (comma-separated). Your progress saves to your browser. Use export/import to move progress between devices.</p>
+
+        <div class="controls">
+            <button id="markAll" class="primary">Mark all</button>
+            <button id="clearAll">Clear all</button>
+            <button id="export">Export</button>
+            <button id="import">Import</button>
+            <input id="importFile" type="file" accept="application/json" style="display:none" />
+        </div>
+
+        <div id="overallProgress" style="margin-top:12px">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                <strong>Overall progress</strong>
+                <span id="overallPercent">0%</span>
+            </div>
+            <div style="background:#eef2ff; height:10px; border-radius:6px; margin-top:6px;">
+                <div id="overallBar" style="height:100%; width:0%; background:linear-gradient(90deg,#7c3aed,#06b6d4); border-radius:6px"></div>
+            </div>
+        </div>
+
+        <div id="syllabusList" style="margin-top:18px;">
+            <!-- We'll build modules programmatically for clearer splitting -->
+        </div>
+
+        <div class="completion" style="margin-top:18px">
+            <span id="summaryBadge" class="badge" style="display:none">All Completed</span>
+        </div>
+
+        <a class="back" href="../exam_schedule_web.html">← Back to Exam Schedule</a>
+    </div>
+
+    <script>
+        // Data model: modules with titles, hours and topic strings (comma-separated)
+        const MODULES = [
+            {
+                id: 'm1', title: '1.0 Basic Concepts and Finite Automata', hrs: 9,
+                topics: [
+                    '1.1 Importance of TCS',
+                    'Alphabets', 'Strings', 'Languages', 'Closure properties', 'Finite Automata (FA)', 'Finite State machine (FSM)'
+                ]
+            },
+            {
+                id: 'm1b', title: '1.2 DFA / NFA and related topics', hrs: 0,
+                topics: [
+                    'Deterministic Finite Automata (DFA)', 'Nondeterministic Finite Automata (NFA)', 'Definitions', 'Transition diagrams', 'Language recognizers', 'Equivalence between NFA with and without ε-transitions', 'NFA to DFA Conversion', 'Minimization of DFA', 'FSM with output: Moore and Mealy machines', 'Applications and limitations of FA'
+                ]
+            },
+            {
+                id: 'm2', title: '2.0 Regular Expressions and Languages', hrs: 7,
+                topics: ['Regular Expression (RE)', 'Equivalence of RE and FA', "Arden's Theorem", 'RE Applications', 'Regular Language (RL)', 'Closure properties of RLs', 'Decision properties of RLs', 'Pumping lemma for RLs']
+            },
+            {
+                id: 'm3', title: '3.0 Grammars', hrs: 8,
+                topics: ['Grammars and Chomsky hierarchy', 'Regular Grammar (RG)', 'Equivalence of Left and Right linear grammar', 'Equivalence of RG and FA', 'Context Free Grammars (CFG)', 'Sentential forms', 'Leftmost and Rightmost derivations', 'Parse tree', 'Ambiguity', 'Simplification and Applications', 'Chomsky Normal Form (CNF)', 'Greibach Normal Form (GNF)', 'Context Free language (CFL) - Pumping lemma', 'Closure properties']
+            },
+            {
+                id: 'm4', title: '4.0 Pushdown Automata (PDA)', hrs: 4,
+                topics: ['Definition', 'Language of PDA', 'PDA as generator', 'PDA as decider', 'PDA as acceptor of CFG', 'Deterministic PDA', 'Non-Deterministic PDA', 'Applications of PDA']
+            },
+            {
+                id: 'm5', title: '5.0 Turing Machine (TM)', hrs: 9,
+                topics: ['Definition', 'Design of TM as generator', 'Decider and acceptor', 'Multitrack TM', 'Multitape TM', 'Universal TM', 'Applications', 'Power and Limitations of TMs']
+            },
+            {
+                id: 'm6', title: '6.0 Undecidability', hrs: 2,
+                topics: ['Decidability and Undecidability', 'Recursive and Recursively Enumerable Languages', 'Halting Problem', "Rice's Theorem", 'Post Correspondence Problem']
+            }
+        ];
+
+        const STORAGE_KEY = 'tcs_syllabus_checklist_v2';
+
+        function splitClean(arr) {
+            // Already split into neat items in our data model, but keep function for future parsing
+            return arr.map(s => s.trim()).filter(Boolean);
+        }
+
+        function buildChecklist() {
+            const container = document.getElementById('syllabusList');
+            container.innerHTML = '';
+            MODULES.forEach(mod => {
+                const moduleEl = document.createElement('section');
+                moduleEl.className = 'module';
+                moduleEl.style.marginBottom = '18px';
+
+                const header = document.createElement('div');
+                header.style.display = 'flex';
+                header.style.justifyContent = 'space-between';
+                header.style.alignItems = 'center';
+                const h = document.createElement('h2');
+                h.textContent = `${mod.title} (${String(mod.hrs).padStart(2,'0')} hrs)`;
+                h.style.margin = '0';
+                h.style.fontSize = '18px';
+                header.appendChild(h);
+
+                const progWrap = document.createElement('div');
+                progWrap.style.width = '220px';
+                progWrap.innerHTML = `
+                    <div style="font-size:12px;color:#475569;margin-bottom:6px">Module progress</div>
+                    <div style="background:#f1f5f9;height:8px;border-radius:6px;overflow:hidden"><div class="modBar" data-mod="${mod.id}" style="height:100%;width:0%;background:linear-gradient(90deg,#7c3aed,#06b6d4)"></div></div>
+                `;
+                header.appendChild(progWrap);
+
+                moduleEl.appendChild(header);
+
+                const ul = document.createElement('ul');
+                ul.style.marginTop = '10px';
+                const topics = splitClean(mod.topics);
+                topics.forEach((t, idx) => {
+                    const itemId = `${mod.id}.t${idx+1}`;
+                    const li = document.createElement('li');
+                    li.style.padding = '12px';
+                    li.style.border = '1px solid #eef2ff';
+                    li.style.borderRadius = '10px';
+                    li.style.marginBottom = '8px';
+                    li.style.background = '#fff';
+
+                    const label = document.createElement('label');
+                    label.style.display = 'flex';
+                    label.style.alignItems = 'flex-start';
+                    label.style.gap = '12px';
+
+                    const chk = document.createElement('input');
+                    chk.type = 'checkbox';
+                    chk.dataset.id = itemId;
+                    chk.style.marginTop = '3px';
+                    chk.style.width = '20px'; chk.style.height = '20px';
+
+                    const txt = document.createElement('div');
+                    txt.innerHTML = `<strong style="display:block;margin-bottom:4px;color:#0b1220">${t.split(/[:\-–—]/)[0].trim()}</strong><div style="color:#475569;font-size:14px">${t}</div>`;
+
+                    label.appendChild(chk);
+                    label.appendChild(txt);
+                    li.appendChild(label);
+                    ul.appendChild(li);
+                });
+
+                moduleEl.appendChild(ul);
+                container.appendChild(moduleEl);
+            });
+        }
+
+        function loadState() {
+            try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ return {}; }
+        }
+        function saveState(s){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e){ console.error(e);} }
+
+        function updateProgress() {
+            const inputs = Array.from(document.querySelectorAll('#syllabusList input[type=checkbox]'));
+            const total = inputs.length;
+            const done = inputs.filter(i => i.checked).length;
+            const percent = total ? Math.round(done/total*100) : 0;
+            document.getElementById('overallPercent').textContent = percent + '%';
+            document.getElementById('overallBar').style.width = percent + '%';
+
+            // module bars
+            const moduleEls = document.querySelectorAll('.modBar');
+            moduleEls.forEach(bar => {
+                const modId = bar.dataset.mod;
+                const modInputs = Array.from(document.querySelectorAll(`#syllabusList input[data-id^="${modId}."]`));
+                const mTotal = modInputs.length;
+                const mDone = modInputs.filter(i=>i.checked).length;
+                const mPercent = mTotal ? Math.round(mDone/mTotal*100) : 0;
+                bar.style.width = mPercent + '%';
+            });
+
+            document.getElementById('summaryBadge').style.display = (percent === 100) ? 'inline-block' : 'none';
+        }
+
+        function bindEvents() {
+            const inputs = Array.from(document.querySelectorAll('#syllabusList input[type=checkbox]'));
+            const state = loadState();
+            inputs.forEach(i => {
+                const id = i.dataset.id;
+                if (state[id]) i.checked = true;
+                i.addEventListener('change', () => {
+                    const s = loadState();
+                    s[id] = i.checked;
+                    saveState(s);
+                    updateProgress();
+                });
+            });
+
+            document.getElementById('markAll').addEventListener('click', () => {
+                const s = loadState();
+                inputs.forEach(i => { i.checked = true; s[i.dataset.id] = true; });
+                saveState(s); updateProgress();
+            });
+            document.getElementById('clearAll').addEventListener('click', () => {
+                const s = loadState();
+                inputs.forEach(i => { i.checked = false; s[i.dataset.id] = false; });
+                saveState(s); updateProgress();
+            });
+
+            document.getElementById('export').addEventListener('click', () => {
+                const s = loadState();
+                const blob = new Blob([JSON.stringify(s, null, 2)], {type:'application/json'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a'); a.href = url; a.download = 'tcs_syllabus_progress.json'; a.click(); URL.revokeObjectURL(url);
+            });
+
+            document.getElementById('import').addEventListener('click', () => document.getElementById('importFile').click());
+            document.getElementById('importFile').addEventListener('change', (e) => {
+                const file = e.target.files[0]; if (!file) return;
+                const reader = new FileReader();
+                reader.onload = () => {
+                    try { const obj = JSON.parse(reader.result); saveState(obj); location.reload(); } catch(e){ alert('Invalid JSON'); }
+                };
+                reader.readAsText(file);
+            });
+        }
+
+        // Build UI then bind
+        buildChecklist();
+        bindEvents();
+        updateProgress();
+    </script>
+</body>
+</html>
