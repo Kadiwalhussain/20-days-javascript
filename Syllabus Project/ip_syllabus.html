@@ -1,38 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Internet Programming - Syllabus</title>
-  <style>body{font-family:Inter,system-ui,Arial;padding:28px;background:#f7fbff;color:#071233}.card{max-width:980px;margin:0 auto;background:#fff;padding:24px;border-radius:12px}.controls{display:flex;gap:8px;margin-bottom:10px}button{background:#eef2ff;border:1px solid #e0e7ff;padding:8px 12px;border-radius:9px}.module{margin-bottom:16px}ul{list-style:none;padding:0;margin-top:8px}li{padding:12px;border-radius:10px;border:1px solid #eef2ff;margin-bottom:8px;background:#fff}label{display:flex;gap:12px;align-items:flex-start}</style>
+<!DOCTYPE html><!DOCTYPE html>
+
+<html><html lang="en">
+
+<head><head>
+
+    <title>Internet Programming Syllabus</title>  <meta charset="utf-8" />
+
+    <style>  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+        body {  <title>Internet Programming - Syllabus</title>
+
+            font-family: Arial, sans-serif;  <style>body{font-family:Inter,system-ui,Arial;padding:28px;background:#f7fbff;color:#071233}.card{max-width:980px;margin:0 auto;background:#fff;padding:24px;border-radius:12px}.controls{display:flex;gap:8px;margin-bottom:10px}button{background:#eef2ff;border:1px solid #e0e7ff;padding:8px 12px;border-radius:9px}.module{margin-bottom:16px}ul{list-style:none;padding:0;margin-top:8px}li{padding:12px;border-radius:10px;border:1px solid #eef2ff;margin-bottom:8px;background:#fff}label{display:flex;gap:12px;align-items:flex-start}</style>
+
+            margin: 40px;</head>
+
+            background-color: #f0f0f0;<body>
+
+        }  <div class="card">
+
+        .container {    <h1>Internet Programming <span class="badge">Syllabus</span></h1>
+
+            max-width: 800px;    <p>Checklist for Internet Programming.</p>
+
+            margin: 0 auto;    <div class="controls"><button id="markAll">Mark all</button><button id="clearAll">Clear all</button><button id="export">Export</button><button id="import">Import</button><input id="importFile" type="file" accept="application/json" style="display:none"/></div>
+
+            background-color: white;    <div id="syllabusList"></div>
+
+            padding: 20px;    <a href="index.html" style="margin-left: 10px; text-decoration: none; color: #3730a3;">← Back to Courses</a>
+
+            border-radius: 8px;  </div>
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);  <script>
+
+        }    const MODULES=[
+
+        h1 {      {id:'ip1',title:'1 Introduction to Web Technology',hrs:10,topics:['Web Essentials: Clients, Servers, Communication','Basic Internet protocols','HTTP Request/Response','HTML5 fundamentals: syntax, tables, lists, images, controls, semantic elements, audio/video','CSS3 basics: cascading, backgrounds, colors, shadows, transformations, transitions, animation','Bootstrap basics']},
+
+            color: #2c3e50;      {id:'ip2',title:'2 Front End Development',hrs:7,topics:['JavaScript introduction','DOM','Date and Objects','Regular Expressions','Exception Handling','Validation','Event Handling','DHTML','JSON','Http Request']},
+
+            text-align: center;      {id:'ip3',title:'3 Back End Development',hrs:7,topics:['Servlets: Architecture & Life Cycle','Form GET and POST','Session Handling','Cookies','Apache Tomcat','Database Connectivity: JDBC','JSP and JSTL']},
+
+        }      {id:'ip4',title:'4 Rich Internet Application (RIA)',hrs:4,topics:['RIA characteristics','AJAX basics','jQuery with AJAX']},
+
+        .unit {      {id:'ip5',title:'5 Web Extension: PHP and XML',hrs:6,topics:['XML DTD and Schema','DOM','XML Parsers: DOM & SAX','XSL','PHP basics: data types, control structures, built-in functions','PHP & MySQL connectivity']},
+
+            margin-bottom: 20px;      {id:'ip6',title:'6 React js',hrs:5,topics:['React features','Hello World','JSX basics','Simple apps']}
+
+            padding: 15px;    ];
+
+            background-color: #f8f9fa;    const STORAGE_KEY='ip_syllabus_v1';
+
+            border-radius: 5px;    function build(){const c=document.getElementById('syllabusList');MODULES.forEach(mod=>{const s=document.createElement('section');s.className='module';s.innerHTML=`<h3>${mod.title} (${String(mod.hrs).padStart(2,'0')} hrs)</h3>`;const ul=document.createElement('ul');mod.topics.forEach((t,i)=>{const id=`${mod.id}.t${i+1}`;const li=document.createElement('li');li.innerHTML=`<label><input data-id="${id}" type="checkbox"> <div><strong>${t.split(/[:\-–—]/)[0]}</strong><div style="color:#475569">${t}</div></div></label>`;ul.appendChild(li)});s.appendChild(ul);c.appendChild(s)})}
+
+        }    function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(e){return{}}}
+
+        .unit h2 {    function save(s){localStorage.setItem(STORAGE_KEY,JSON.stringify(s))}
+
+            color: #3498db;    build();const inputs=Array.from(document.querySelectorAll('#syllabusList input[type=checkbox]'));const state=load();inputs.forEach(i=>{const id=i.dataset.id;if(state[id])i.checked=true;i.addEventListener('change',()=>{const s=load();s[id]=i.checked;save(s)})});
+
+            margin-top: 0;    document.getElementById('markAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=true;s[i.dataset.id]=true});save(s)});
+
+        }    document.getElementById('clearAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=false;s[i.dataset.id]=false});save(s)});
+
+        .back-button {    document.getElementById('export').addEventListener('click',()=>{const s=load();const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='ip_progress.json';a.click();URL.revokeObjectURL(url)});
+
+            display: inline-block;    document.getElementById('import').addEventListener('click',()=>document.getElementById('importFile').click());
+
+            padding: 10px 20px;    document.getElementById('importFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result);localStorage.setItem(STORAGE_KEY,JSON.stringify(obj));location.reload()}catch(err){alert('Invalid JSON')}};r.readAsText(f)});
+
+            background-color: #3498db;  </script>
+
+            color: white;</body>
+
+            text-decoration: none;</html>
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Internet Programming <span class="badge">Syllabus</span></h1>
-    <p>Checklist for Internet Programming.</p>
-    <div class="controls"><button id="markAll">Mark all</button><button id="clearAll">Clear all</button><button id="export">Export</button><button id="import">Import</button><input id="importFile" type="file" accept="application/json" style="display:none"/></div>
-    <div id="syllabusList"></div>
-    <a href="index.html" style="margin-left: 10px; text-decoration: none; color: #3730a3;">← Back to Courses</a>
-  </div>
-  <script>
-    const MODULES=[
-      {id:'ip1',title:'1 Introduction to Web Technology',hrs:10,topics:['Web Essentials: Clients, Servers, Communication','Basic Internet protocols','HTTP Request/Response','HTML5 fundamentals: syntax, tables, lists, images, controls, semantic elements, audio/video','CSS3 basics: cascading, backgrounds, colors, shadows, transformations, transitions, animation','Bootstrap basics']},
-      {id:'ip2',title:'2 Front End Development',hrs:7,topics:['JavaScript introduction','DOM','Date and Objects','Regular Expressions','Exception Handling','Validation','Event Handling','DHTML','JSON','Http Request']},
-      {id:'ip3',title:'3 Back End Development',hrs:7,topics:['Servlets: Architecture & Life Cycle','Form GET and POST','Session Handling','Cookies','Apache Tomcat','Database Connectivity: JDBC','JSP and JSTL']},
-      {id:'ip4',title:'4 Rich Internet Application (RIA)',hrs:4,topics:['RIA characteristics','AJAX basics','jQuery with AJAX']},
-      {id:'ip5',title:'5 Web Extension: PHP and XML',hrs:6,topics:['XML DTD and Schema','DOM','XML Parsers: DOM & SAX','XSL','PHP basics: data types, control structures, built-in functions','PHP & MySQL connectivity']},
-      {id:'ip6',title:'6 React js',hrs:5,topics:['React features','Hello World','JSX basics','Simple apps']}
-    ];
-    const STORAGE_KEY='ip_syllabus_v1';
-    function build(){const c=document.getElementById('syllabusList');MODULES.forEach(mod=>{const s=document.createElement('section');s.className='module';s.innerHTML=`<h3>${mod.title} (${String(mod.hrs).padStart(2,'0')} hrs)</h3>`;const ul=document.createElement('ul');mod.topics.forEach((t,i)=>{const id=`${mod.id}.t${i+1}`;const li=document.createElement('li');li.innerHTML=`<label><input data-id="${id}" type="checkbox"> <div><strong>${t.split(/[:\-–—]/)[0]}</strong><div style="color:#475569">${t}</div></div></label>`;ul.appendChild(li)});s.appendChild(ul);c.appendChild(s)})}
-    function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(e){return{}}}
-    function save(s){localStorage.setItem(STORAGE_KEY,JSON.stringify(s))}
-    build();const inputs=Array.from(document.querySelectorAll('#syllabusList input[type=checkbox]'));const state=load();inputs.forEach(i=>{const id=i.dataset.id;if(state[id])i.checked=true;i.addEventListener('change',()=>{const s=load();s[id]=i.checked;save(s)})});
-    document.getElementById('markAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=true;s[i.dataset.id]=true});save(s)});
-    document.getElementById('clearAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=false;s[i.dataset.id]=false});save(s)});
-    document.getElementById('export').addEventListener('click',()=>{const s=load();const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='ip_progress.json';a.click();URL.revokeObjectURL(url)});
-    document.getElementById('import').addEventListener('click',()=>document.getElementById('importFile').click());
-    document.getElementById('importFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result);localStorage.setItem(STORAGE_KEY,JSON.stringify(obj));location.reload()}catch(err){alert('Invalid JSON')}};r.readAsText(f)});
-  </script>
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Directory</a>
+        
+        <h1>Internet Programming Syllabus</h1>
+
+        <div class="unit">
+            <h2>Unit 1: Web Fundamentals</h2>
+            <ul>
+                <li>Introduction to Internet</li>
+                <li>HTML5 and CSS3</li>
+                <li>Responsive Web Design</li>
+                <li>Web Standards</li>
+            </ul>
+        </div>
+
+        <div class="unit">
+            <h2>Unit 2: Client-Side Programming</h2>
+            <ul>
+                <li>JavaScript Fundamentals</li>
+                <li>DOM Manipulation</li>
+                <li>Event Handling</li>
+                <li>AJAX and JSON</li>
+            </ul>
+        </div>
+
+        <div class="unit">
+            <h2>Unit 3: Server-Side Programming</h2>
+            <ul>
+                <li>PHP Basics</li>
+                <li>Database Integration</li>
+                <li>Session Management</li>
+                <li>Security Concepts</li>
+            </ul>
+        </div>
+
+        <div class="unit">
+            <h2>Unit 4: Web Frameworks</h2>
+            <ul>
+                <li>Introduction to Frameworks</li>
+                <li>MVC Architecture</li>
+                <li>Popular Frameworks</li>
+                <li>REST APIs</li>
+            </ul>
+        </div>
+
+        <div class="unit">
+            <h2>Unit 5: Web Services</h2>
+            <ul>
+                <li>Web Service Architecture</li>
+                <li>SOAP vs REST</li>
+                <li>XML and JSON</li>
+                <li>API Development</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

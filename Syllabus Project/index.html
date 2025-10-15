@@ -1,148 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Science Syllabus Portal</title>
+    <title>Course Syllabus</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
-        body { 
-            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial; 
-            padding: 36px; 
-            background: linear-gradient(180deg,#f6f8ff,#f4f6fb); 
-            color: #0f172a;
-            min-height: 100vh;
-            margin: 0;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f0f0f0;
         }
-        .card { 
-            max-width: 980px; 
-            margin: 0 auto; 
-            background: white; 
-            padding: 28px; 
-            border-radius: 14px; 
-            box-shadow: 0 18px 50px rgba(14,30,60,0.08); 
-        }
-        h1 { 
-            margin-bottom: 24px; 
-            font-family: 'Playfair Display', serif; 
-            font-size: 32px;
+        h1 {
             text-align: center;
+            color: #2c3e50;
         }
-        .courses {
+        .course-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-top: 24px;
+            margin-top: 30px;
         }
         .course-card {
-            background: linear-gradient(180deg,#ffffff,#fbfdff);
-            border: 1px solid #eef3ff;
+            background-color: white;
             padding: 20px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
         .course-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(99,102,241,0.12);
+            transform: translateY(-5px);
         }
         .course-card h2 {
-            margin: 0 0 8px 0;
-            font-size: 18px;
-            color: #1e293b;
+            color: #3498db;
+            margin-top: 0;
         }
-        .course-code {
-            color: #475569;
-            font-size: 14px;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .view-btn {
+        .course-card a {
             display: inline-block;
-            background: #eef2ff;
-            border: 1px solid #e0e7ff;
-            color: #3730a3;
-            padding: 8px 16px;
-            border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.2s ease;
+            color: #3498db;
+            font-weight: bold;
         }
-        .view-btn:hover {
-            background: #e0e7ff;
-            transform: translateY(-1px);
-        }
-        .exam-schedule {
-            margin-top: 24px;
-            text-align: center;
-        }
-        .exam-btn {
-            background: linear-gradient(135deg,#6d28d9,#7c3aed);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 18px rgba(124,58,237,0.25);
-        }
-        .exam-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(124,58,237,0.35);
+        .course-card a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Computer Science Syllabus Portal</h1>
+    <h1>Course Syllabus Directory</h1>
+    
+    <div class="course-grid">
+        <div class="course-card">
+            <h2>ADBMS</h2>
+            <p>Advanced Database Management Systems</p>
+            <a href="adbms_syllabus.html">View Syllabus →</a>
+        </div>
         
-        <div class="courses">
-            <div class="course-card">
-                <h2>Advanced Database Management Systems</h2>
-                <span class="course-code">Course Code: ADBMS</span>
-                <a href="adbms_syllabus.html" class="view-btn">View Syllabus</a>
-            </div>
-
-            <div class="course-card">
-                <h2>Computer Networks</h2>
-                <span class="course-code">Course Code: CN</span>
-                <a href="cn_syllabus.html" class="view-btn">View Syllabus</a>
-            </div>
-
-            <div class="course-card">
-                <h2>Data Warehouse and Mining</h2>
-                <span class="course-code">Course Code: DWM</span>
-                <a href="dwm_syllabus.html" class="view-btn">View Syllabus</a>
-            </div>
-
-            <div class="course-card">
-                <h2>Internet Programming</h2>
-                <span class="course-code">Course Code: IP</span>
-                <a href="ip_syllabus.html" class="view-btn">View Syllabus</a>
-            </div>
-
-            <div class="course-card">
-                <h2>Program Management</h2>
-                <span class="course-code">Course Code: PGM</span>
-                <a href="pgm_syllabus.html" class="view-btn">View Syllabus</a>
-            </div>
-
-            <div class="course-card">
-                <h2>Software Engineering</h2>
-                <span class="course-code">Course Code: SE</span>
-                <a href="se_syllabus.html" class="view-btn">View Syllabus</a>
-            </div>
-
-            <div class="course-card">
-                <h2>Theoretical Computer Science</h2>
-                <span class="course-code">Course Code: 31921</span>
-                <a href="tcs_syllabus.html" class="view-btn">View Syllabus</a>
-            </div>
+        <div class="course-card">
+            <h2>CN</h2>
+            <p>Computer Networks</p>
+            <a href="cn_syllabus.html">View Syllabus →</a>
+        </div>
+        
+        <div class="course-card">
+            <h2>DWM</h2>
+            <p>Data Warehouse and Mining</p>
+            <a href="dwm_syllabus.html">View Syllabus →</a>
+        </div>
+        
+        <div class="course-card">
+            <h2>IP</h2>
+            <p>Internet Programming</p>
+            <a href="ip_syllabus.html">View Syllabus →</a>
+        </div>
+        
+        <div class="course-card">
+            <h2>PGM</h2>
+            <p>Program Management</p>
+            <a href="pgm_syllabus.html">View Syllabus →</a>
+        </div>
+        
+        <div class="course-card">
+            <h2>SE</h2>
+            <p>Software Engineering</p>
+            <a href="se_syllabus.html">View Syllabus →</a>
+        </div>
+        
+        <div class="course-card">
+            <h2>TCS</h2>
+            <p>Theory of Computer Science</p>
+            <a href="tcs_syllabus.html">View Syllabus →</a>
         </div>
 
-        <div class="exam-schedule">
-            <a href="exam_schedule_web.html" class="exam-btn">View Exam Schedule</a>
+        <div class="course-card">
+            <h2>Exam Schedule</h2>
+            <p>View examination timetable</p>
+            <a href="exam_schedule_web.html">View Schedule →</a>
         </div>
     </div>
 </body>

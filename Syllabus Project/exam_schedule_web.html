@@ -1,127 +1,250 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Schedule - November 2025</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+<!DOCTYPE html><!DOCTYPE html>
+
+<html><html lang="en">
+
+<head><head>
+
+    <title>Exam Schedule</title>    <meta charset="UTF-8">
+
+    <style>    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        body {    <title>Exam Schedule - November 2025</title>
+
+            font-family: Arial, sans-serif;    <style>
+
+            margin: 40px;        * {
+
+            background-color: #f0f0f0;            margin: 0;
+
+        }            padding: 0;
+
+        .container {            box-sizing: border-box;
+
+            max-width: 800px;        }
+
+            margin: 0 auto;        
+
+            background-color: white;        .back-btn {
+
+            padding: 20px;            position: fixed;
+
+            border-radius: 8px;            top: 20px;
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);            left: 20px;
+
+        }            background: white;
+
+        h1 {            color: #3730a3;
+
+            color: #2c3e50;            padding: 10px 20px;
+
+            text-align: center;            border-radius: 8px;
+
+        }            text-decoration: none;
+
+        .exam-schedule {            font-weight: 600;
+
+            margin-top: 20px;            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+        }            transition: all 0.3s ease;
+
+        table {            z-index: 100;
+
+            width: 100%;        }
+
+            border-collapse: collapse;        
+
+            margin-top: 20px;        .back-btn:hover {
+
+        }            transform: translateY(-2px);
+
+        th, td {            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+
+            padding: 12px;        }
+
+            text-align: left;
+
+            border-bottom: 1px solid #ddd;        body {
+
+        }            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        th {            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            background-color: #3498db;            min-height: 100vh;
+
+            color: white;            padding: 20px;
+
+        }        }
+
+        tr:nth-child(even) {
+
+            background-color: #f8f9fa;        .container {
+
+        }            max-width: 1200px;
+
+        tr:hover {            margin: 0 auto;
+
+            background-color: #f2f2f2;        }
+
         }
+
+        .back-button {        header {
+
+            display: inline-block;            text-align: center;
+
+            padding: 10px 20px;            color: white;
+
+            background-color: #3498db;            margin-bottom: 40px;
+
+            color: white;            animation: fadeInDown 0.8s ease;
+
+            text-decoration: none;        }
+
+            border-radius: 5px;
+
+            margin-bottom: 20px;        h1 {
+
+        }            font-size: 2.5em;
+
+        .back-button:hover {            margin-bottom: 10px;
+
+            background-color: #2980b9;            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
+        }        }
+
+    </style>
+
+</head>        .subtitle {
+
+<body>            font-size: 1.2em;
+
+    <div class="container">            opacity: 0.9;
+
+        <a href="index.html" class="back-button">← Back to Directory</a>        }
+
         
-        .back-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: white;
-            color: #3730a3;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-        
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-        }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
+        <h1>Exam Schedule</h1>        .timeline {
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-            animation: fadeInDown 0.8s ease;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        .timeline {
             position: relative;
-            padding: 20px 0;
-        }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: rgba(255,255,255,0.3);
-            border-radius: 2px;
-        }
+        <div class="exam-schedule">            padding: 20px 0;
 
-        .exam-card {
-            position: relative;
-            margin: 30px 0;
-            animation: fadeInUp 0.6s ease;
-            animation-fill-mode: both;
-        }
+            <table>        }
 
-        .exam-card:nth-child(1) { animation-delay: 0.1s; }
-        .exam-card:nth-child(2) { animation-delay: 0.2s; }
-        .exam-card:nth-child(3) { animation-delay: 0.3s; }
-        .exam-card:nth-child(4) { animation-delay: 0.4s; }
-        .exam-card:nth-child(5) { animation-delay: 0.5s; }
-        .exam-card:nth-child(6) { animation-delay: 0.6s; }
-        .exam-card:nth-child(7) { animation-delay: 0.7s; }
+                <thead>
 
-        .exam-content {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            width: calc(50% - 40px);
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+                    <tr>        .timeline::before {
 
-        .exam-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
+                        <th>Date</th>            content: '';
 
-        .exam-card:nth-child(odd) .exam-content {
-            margin-left: 0;
-        }
+                        <th>Time</th>            position: absolute;
 
-        .exam-card:nth-child(even) .exam-content {
-            margin-left: auto;
-        }
+                        <th>Subject</th>            left: 50%;
 
-        .date-badge {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            color: #667eea;
-            padding: 10px 20px;
+                        <th>Duration</th>            transform: translateX(-50%);
+
+                    </tr>            width: 4px;
+
+                </thead>            height: 100%;
+
+                <tbody>            background: rgba(255,255,255,0.3);
+
+                    <tr>            border-radius: 2px;
+
+                        <td>Dec 1, 2023</td>        }
+
+                        <td>9:30 AM</td>
+
+                        <td>Advanced Database Management Systems</td>        .exam-card {
+
+                        <td>3 hours</td>            position: relative;
+
+                    </tr>            margin: 30px 0;
+
+                    <tr>            animation: fadeInUp 0.6s ease;
+
+                        <td>Dec 4, 2023</td>            animation-fill-mode: both;
+
+                        <td>9:30 AM</td>        }
+
+                        <td>Computer Networks</td>
+
+                        <td>3 hours</td>        .exam-card:nth-child(1) { animation-delay: 0.1s; }
+
+                    </tr>        .exam-card:nth-child(2) { animation-delay: 0.2s; }
+
+                    <tr>        .exam-card:nth-child(3) { animation-delay: 0.3s; }
+
+                        <td>Dec 7, 2023</td>        .exam-card:nth-child(4) { animation-delay: 0.4s; }
+
+                        <td>9:30 AM</td>        .exam-card:nth-child(5) { animation-delay: 0.5s; }
+
+                        <td>Data Warehouse and Mining</td>        .exam-card:nth-child(6) { animation-delay: 0.6s; }
+
+                        <td>3 hours</td>        .exam-card:nth-child(7) { animation-delay: 0.7s; }
+
+                    </tr>
+
+                    <tr>        .exam-content {
+
+                        <td>Dec 11, 2023</td>            background: white;
+
+                        <td>9:30 AM</td>            border-radius: 15px;
+
+                        <td>Internet Programming</td>            padding: 25px;
+
+                        <td>3 hours</td>            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+                    </tr>            width: calc(50% - 40px);
+
+                    <tr>            position: relative;
+
+                        <td>Dec 14, 2023</td>            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+                        <td>9:30 AM</td>        }
+
+                        <td>Program Management</td>
+
+                        <td>3 hours</td>        .exam-content:hover {
+
+                    </tr>            transform: translateY(-5px);
+
+                    <tr>            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+
+                        <td>Dec 18, 2023</td>        }
+
+                        <td>9:30 AM</td>
+
+                        <td>Software Engineering</td>        .exam-card:nth-child(odd) .exam-content {
+
+                        <td>3 hours</td>            margin-left: 0;
+
+                    </tr>        }
+
+                    <tr>
+
+                        <td>Dec 21, 2023</td>        .exam-card:nth-child(even) .exam-content {
+
+                        <td>9:30 AM</td>            margin-left: auto;
+
+                        <td>Theory of Computer Science</td>        }
+
+                        <td>3 hours</td>
+
+                    </tr>        .date-badge {
+
+                </tbody>            position: absolute;
+
+            </table>            left: 50%;
+
+        </div>            transform: translateX(-50%);
+
+    </div>            background: white;
+
+</body>            color: #667eea;
+
+</html>            padding: 10px 20px;
             border-radius: 25px;
             font-weight: bold;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
