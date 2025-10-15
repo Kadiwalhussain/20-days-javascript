@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+#!/bin/zsh
+# Update the style and structure of all syllabus files
+
+# Get the directory of the script
+DIR="/Users/muhammadhussainkadiwal/Downloads/project/Syllabus Project"
+
+# List of all syllabus files
+FILES=("adbms_syllabus.html" "cn_syllabus.html" "dwm_syllabus.html" "exam_schedule_web.html" "ip_syllabus.html" "pgm_syllabus.html" "se_syllabus.html" "tcs_syllabus.html")
+
+# Common header content
+HEADER='<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -203,62 +213,24 @@
         }
     </style>
 </head>
+'
 
-<body>
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Directory</a>
+# Loop through each file and update it
+for file in "${FILES[@]}"; do
+    if [[ -f "$DIR/$file" ]]; then
+        # Create backup
+        cp "$DIR/$file" "$DIR/$file.bak"
         
-        <h1>Program Management Syllabus</h1>
+        # Extract content between <body> tags
+        BODY=$(sed -n '/<body/,/<\/body>/p' "$DIR/$file")
+        
+        # Create new file with updated structure
+        echo "$HEADER" > "$DIR/$file"
+        echo "$BODY" >> "$DIR/$file"
+        echo "</html>" >> "$DIR/$file"
+        
+        echo "Updated $file with new styling"
+    fi
+done
 
-        <div class="unit">
-            <h2>Unit 1: Introduction to Program Management</h2>
-            <ul>
-                <li>Program Management Concepts</li>
-                <li>Project vs Program Management</li>
-                <li>Program Lifecycle</li>
-                <li>Program Organization</li>
-            </ul>
-        </div>
-
-        <div class="unit">
-            <h2>Unit 2: Program Planning</h2>
-            <ul>
-                <li>Strategic Planning</li>
-                <li>Resource Management</li>
-                <li>Risk Assessment</li>
-                <li>Stakeholder Management</li>
-            </ul>
-        </div>
-
-        <div class="unit">
-            <h2>Unit 3: Program Execution</h2>
-            <ul>
-                <li>Program Governance</li>
-                <li>Quality Management</li>
-                <li>Change Management</li>
-                <li>Performance Monitoring</li>
-            </ul>
-        </div>
-
-        <div class="unit">
-            <h2>Unit 4: Program Control</h2>
-            <ul>
-                <li>Cost Control</li>
-                <li>Schedule Management</li>
-                <li>Issue Resolution</li>
-                <li>Risk Mitigation</li>
-            </ul>
-        </div>
-
-        <div class="unit">
-            <h2>Unit 5: Program Closure</h2>
-            <ul>
-                <li>Program Evaluation</li>
-                <li>Benefit Realization</li>
-                <li>Documentation</li>
-                <li>Lessons Learned</li>
-            </ul>
-        </div>
-    </div>
-</body>
-</html>
+echo "All files have been updated with the new UI"

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Program Management Syllabus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .unit {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .unit h2 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Directory</a>
+        
+        <h1>Program Management Syllabus</h1>
+
+        <div class="unit">
+            <h2>Unit 1: Introduction to Program Management</h2>
+            <ul>
+                <li>Program Management Concepts</li>
+                <li>Project vs Program Management</li>
+                <li>Program Lifecycle</li>
+                <li>Program Organization</li>
+            </ul>
+        </div>
+
+        <div class="unit">
+            <h2>Unit 2: Program Planning</h2>
+            <ul>
+                <li>Strategic Planning</li>
+                <li>Resource Management</li>
+                <li>Risk Assessment</li>
+                <li>Stakeholder Management</li>
+            </ul>
+        </div>
+
+        <div class="unit">
+            <h2>Unit 3: Program Execution</h2>
+            <ul>
+                <li>Program Governance</li>
+                <li>Quality Management</li>
+                <li>Change Management</li>
+                <li>Performance Monitoring</li>
+            </ul>
+        </div>
+
+        <div class="unit">
+            <h2>Unit 4: Program Control</h2>
+            <ul>
+                <li>Cost Control</li>
+                <li>Schedule Management</li>
+                <li>Issue Resolution</li>
+                <li>Risk Mitigation</li>
+            </ul>
+        </div>
+
+        <div class="unit">
+            <h2>Unit 5: Program Closure</h2>
+            <ul>
+                <li>Program Evaluation</li>
+                <li>Benefit Realization</li>
+                <li>Documentation</li>
+                <li>Lessons Learned</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

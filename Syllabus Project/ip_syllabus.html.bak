@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Syllabus</title>
+    <title>Internet Programming Syllabus</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,7 +15,7 @@
         }
         
         body {
-            font-family: "Inter", system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             margin: 0;
             padding: 2rem;
             background-color: var(--bg-color);
@@ -171,39 +171,8 @@
                 width: 100%;
             }
         }
-
-        /* For exam schedule */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            background: white;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background: var(--primary-color);
-            color: white;
-            font-weight: 600;
-        }
-
-        tr:hover {
-            background: #f1f5f9;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h1>Internet Programming Syllabus</h1>
