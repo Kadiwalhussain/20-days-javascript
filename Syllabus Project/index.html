@@ -1,45 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Course Syllabus</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Syllabus Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+            --hover-color: #3b82f6;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f0f0f0;
+            font-family: "Inter", system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
         }
+
         h1 {
+            color: var(--primary-color);
+            font-size: 2.25rem;
             text-align: center;
-            color: #2c3e50;
+            margin: 2rem 0 3rem;
+            font-weight: 700;
         }
+
         .course-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            gap: 1.5rem;
+            padding: 0 1rem;
         }
+
         .course-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
         }
+
         .course-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+
         .course-card h2 {
-            color: #3498db;
-            margin-top: 0;
+            color: var(--primary-color);
+            margin: 0 0 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
+
+        .course-card p {
+            color: #64748b;
+            margin: 0 0 1.5rem;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
         .course-card a {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             text-decoration: none;
-            color: #3498db;
-            font-weight: bold;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            margin-top: auto;
         }
+
         .course-card a:hover {
-            text-decoration: underline;
+            color: var(--hover-color);
+        }
+
+        .course-card a::after {
+            content: "→";
+            margin-left: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .course-card a:hover::after {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+                margin: 1.5rem 0 2rem;
+            }
+
+            .course-grid {
+                gap: 1rem;
+            }
+
+            .course-card {
+                padding: 1.25rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .course-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
     </style>
 </head>

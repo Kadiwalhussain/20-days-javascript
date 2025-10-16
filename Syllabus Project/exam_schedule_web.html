@@ -1,339 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Syllabus</title>
+    <title>Exam Schedule - November 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
-            --border-color: #e2e8f0;
-            --hover-color: #3b82f6;
-        }
-        
-        body {
-            font-family: "Inter", system-ui, -apple-system, sans-serif;
+        * {
             margin: 0;
-            padding: 2rem;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .nav-links {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .back-to-directory {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease;
         }
 
         h1 {
-            color: var(--primary-color);
-            font-size: 2.25rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .controls {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
         }
 
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
+        .timeline {
+            position: relative;
+            padding: 20px 0;
         }
 
-        button:hover {
-            background-color: var(--hover-color);
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
         }
 
-        .module {
-            background: #f8fafc;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border-color);
+        .exam-card {
+            position: relative;
+            margin: 30px 0;
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: both;
         }
 
-        .module h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .exam-card:nth-child(1) { animation-delay: 0.1s; }
+        .exam-card:nth-child(2) { animation-delay: 0.2s; }
+        .exam-card:nth-child(3) { animation-delay: 0.3s; }
+        .exam-card:nth-child(4) { animation-delay: 0.4s; }
+        .exam-card:nth-child(5) { animation-delay: 0.5s; }
+        .exam-card:nth-child(6) { animation-delay: 0.6s; }
+        .exam-card:nth-child(7) { animation-delay: 0.7s; }
 
-        .module h3 span {
-            font-size: 0.875rem;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0 0 0;
-        }
-
-        li {
+        .exam-content {
             background: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 0.75rem;
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: calc(50% - 40px);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        li:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        .exam-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        label {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            cursor: pointer;
+        .exam-card:nth-child(odd) .exam-content {
+            margin-left: 0;
         }
 
-        input[type="checkbox"] {
-            width: 1.25rem;
-            height: 1.25rem;
-            margin-top: 0.25rem;
-            cursor: pointer;
-            accent-color: var(--primary-color);
+        .exam-card:nth-child(even) .exam-content {
+            margin-left: auto;
         }
 
-        .topic-content {
-            flex: 1;
+        .date-badge {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+            top: 50%;
+            margin-top: -20px;
+            white-space: nowrap;
         }
 
-        .topic-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .topic-description {
-            color: #64748b;
-            font-size: 0.925rem;
-        }
-
-        .back-link {
+        .course-code {
             display: inline-block;
-            margin-top: 2rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.9em;
         }
 
-        .back-link:hover {
-            color: var(--hover-color);
+        .course-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .exam-time {
+            color: #666;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .time-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .optional-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
+            .timeline::before {
+                left: 30px;
             }
 
-            .container {
-                padding: 1.5rem;
+            .exam-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .date-badge {
+                left: 30px;
+                transform: translateX(-50%);
             }
 
             h1 {
-                font-size: 1.75rem;
-            }
-
-            .controls {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
+                font-size: 1.8em;
             }
         }
 
-        /* For exam schedule */
-        table {
+        .countdown {
+            text-align: center;
+            color: white;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        /* Syllabus table styles */
+        .syllabus-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 2rem 0;
-            background: white;
-            border-radius: 0.5rem;
-            overflow: hidden;
+            margin-top: 14px;
+            font-size: 0.95em;
         }
-
-        th, td {
-            padding: 1rem;
+        .syllabus-table th,
+        .syllabus-table td {
+            border: 1px solid #eee;
+            padding: 8px 10px;
+            vertical-align: top;
+        }
+        .syllabus-table th {
+            background: #f7f7f7;
+            color: #333;
             text-align: left;
-            border-bottom: 1px solid var(--border-color);
         }
-
-        th {
-            background: var(--primary-color);
-            color: white;
+        details.syllabus summary {
+            cursor: pointer;
             font-weight: 600;
+            margin-top: 12px;
         }
-
-        tr:hover {
-            background: #f1f5f9;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
+        .view-syllabus-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
         }
     </style>
 </head>
-
-<body>            font-size: 1.2em;
-
-    <div class="container">            opacity: 0.9;
-
-        <a href="index.html" class="back-button">← Back to Directory</a>        }
-
-        
-
-        <h1>Exam Schedule</h1>        .timeline {
-
-            position: relative;
-
-        <div class="exam-schedule">            padding: 20px 0;
-
-            <table>        }
-
-                <thead>
-
-                    <tr>        .timeline::before {
-
-                        <th>Date</th>            content: '';
-
-                        <th>Time</th>            position: absolute;
-
-                        <th>Subject</th>            left: 50%;
-
-                        <th>Duration</th>            transform: translateX(-50%);
-
-                    </tr>            width: 4px;
-
-                </thead>            height: 100%;
-
-                <tbody>            background: rgba(255,255,255,0.3);
-
-                    <tr>            border-radius: 2px;
-
-                        <td>Dec 1, 2023</td>        }
-
-                        <td>9:30 AM</td>
-
-                        <td>Advanced Database Management Systems</td>        .exam-card {
-
-                        <td>3 hours</td>            position: relative;
-
-                    </tr>            margin: 30px 0;
-
-                    <tr>            animation: fadeInUp 0.6s ease;
-
-                        <td>Dec 4, 2023</td>            animation-fill-mode: both;
-
-                        <td>9:30 AM</td>        }
-
-                        <td>Computer Networks</td>
-
-                        <td>3 hours</td>        .exam-card:nth-child(1) { animation-delay: 0.1s; }
-
-                    </tr>        .exam-card:nth-child(2) { animation-delay: 0.2s; }
-
-                    <tr>        .exam-card:nth-child(3) { animation-delay: 0.3s; }
-
-                        <td>Dec 7, 2023</td>        .exam-card:nth-child(4) { animation-delay: 0.4s; }
-
-                        <td>9:30 AM</td>        .exam-card:nth-child(5) { animation-delay: 0.5s; }
-
-                        <td>Data Warehouse and Mining</td>        .exam-card:nth-child(6) { animation-delay: 0.6s; }
-
-                        <td>3 hours</td>        .exam-card:nth-child(7) { animation-delay: 0.7s; }
-
-                    </tr>
-
-                    <tr>        .exam-content {
-
-                        <td>Dec 11, 2023</td>            background: white;
-
-                        <td>9:30 AM</td>            border-radius: 15px;
-
-                        <td>Internet Programming</td>            padding: 25px;
-
-                        <td>3 hours</td>            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-
-                    </tr>            width: calc(50% - 40px);
-
-                    <tr>            position: relative;
-
-                        <td>Dec 14, 2023</td>            transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-                        <td>9:30 AM</td>        }
-
-                        <td>Program Management</td>
-
-                        <td>3 hours</td>        .exam-content:hover {
-
-                    </tr>            transform: translateY(-5px);
-
-                    <tr>            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-
-                        <td>Dec 18, 2023</td>        }
-
-                        <td>9:30 AM</td>
-
-                        <td>Software Engineering</td>        .exam-card:nth-child(odd) .exam-content {
-
-                        <td>3 hours</td>            margin-left: 0;
-
-                    </tr>        }
-
-                    <tr>
-
-                        <td>Dec 21, 2023</td>        .exam-card:nth-child(even) .exam-content {
-
-                        <td>9:30 AM</td>            margin-left: auto;
-
-                        <td>Theory of Computer Science</td>        }
-
-                        <td>3 hours</td>
-
-                    </tr>        .date-badge {
-
-                </tbody>            position: absolute;
-
-            </table>            left: 50%;
-
-        </div>            transform: translateX(-50%);
-
-    </div>            background: white;
-
-</body>            color: #667eea;
 <body>
-    <a href="index.html" class="back-btn">← Back to Courses</a>
     <div class="container">
+        <div class="nav-links">
+            <a href="index.html" class="back-to-directory">
+                ← Back to Directory
+            </a>
+            <div class="nav-grid">
+                <a href="ip_syllabus.html" class="nav-link">📱 Internet Programming</a>
+                <a href="se_syllabus.html" class="nav-link">🔧 Software Engineering</a>
+                <a href="cn_syllabus.html" class="nav-link">🌐 Computer Networks</a>
+                <a href="dwm_syllabus.html" class="nav-link">📊 Data Warehousing</a>
+                <a href="adbms_syllabus.html" class="nav-link">💾 Adv. DBMS</a>
+                <a href="tcs_syllabus.html" class="nav-link">🎓 Theoretical CS</a>
+                <a href="pgm_syllabus.html" class="nav-link">📈 Programming</a>
+            </div>
+        </div>
+
         <header>
             <h1>📚 Exam Schedule</h1>
             <p class="subtitle">November 2025 | Computer Science Department</p>

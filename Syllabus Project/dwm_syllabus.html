@@ -1,323 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Syllabus</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #2563eb;
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
-            --border-color: #e2e8f0;
-            --hover-color: #3b82f6;
-        }
-        
-        body {
-            font-family: "Inter", system-ui, -apple-system, sans-serif;
-            margin: 0;
-            padding: 2rem;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.25rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .controls {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        button:hover {
-            background-color: var(--hover-color);
-        }
-
-        .module {
-            background: #f8fafc;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .module h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .module h3 span {
-            font-size: 0.875rem;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0 0 0;
-        }
-
-        li {
-            background: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 0.75rem;
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        li:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            cursor: pointer;
-        }
-
-        input[type="checkbox"] {
-            width: 1.25rem;
-            height: 1.25rem;
-            margin-top: 0.25rem;
-            cursor: pointer;
-            accent-color: var(--primary-color);
-        }
-
-        .topic-content {
-            flex: 1;
-        }
-
-        .topic-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .topic-description {
-            color: #64748b;
-            font-size: 0.925rem;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .back-link:hover {
-            color: var(--hover-color);
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-
-            .container {
-                padding: 1.5rem;
-            }
-
-            h1 {
-                font-size: 1.75rem;
-            }
-
-            .controls {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
-
-        /* For exam schedule */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            background: white;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background: var(--primary-color);
-            color: white;
-            font-weight: 600;
-        }
-
-        tr:hover {
-            background: #f1f5f9;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Data Warehousing & Mining - Syllabus</title>
+  <style>body{font-family:Inter,system-ui,Arial;padding:28px;background:#f7fbff;color:#071233}.card{max-width:980px;margin:0 auto;background:#fff;padding:24px;border-radius:12px}.controls{display:flex;gap:8px;margin-bottom:10px}button{background:#eef2ff;border:1px solid #e0e7ff;padding:8px 12px;border-radius:9px}.module{margin-bottom:16px}ul{list-style:none;padding:0;margin-top:8px}li{padding:12px;border-radius:10px;border:1px solid #eef2ff;margin-bottom:8px;background:#fff}label{display:flex;gap:12px;align-items:flex-start}</style>
 </head>
-
-            background-color: #f0f0f0;<body>
-
-        }  <div class="card">
-
-        .container {    <h1>Data Warehousing & Mining <span class="badge">Syllabus</span></h1>
-
-            max-width: 800px;    <p>Checklist view for Data Warehousing and Mining syllabus.</p>
-
-            margin: 0 auto;    <div class="controls"><button id="markAll">Mark all</button><button id="clearAll">Clear all</button><button id="export">Export</button><button id="import">Import</button><input id="importFile" type="file" accept="application/json" style="display:none"/></div>
-
-            background-color: white;    <div id="syllabusList"></div>
-
-            padding: 20px;    <a href="index.html" style="margin-left: 10px; text-decoration: none; color: #3730a3;">← Back to Courses</a>
-
-            border-radius: 8px;  </div>
-
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-
-        }  <script>
-
-        h1 {    const MODULES=[
-
-            color: #2c3e50;      {id:'dw1',title:'1 Data Warehousing Fundamentals',hrs:8,topics:['Introduction to Data Warehouse','Data warehouse architecture','Data warehouse vs Data Marts','E-R Modeling vs Dimensional Modeling','Information Package Diagram','Data Warehouse Schemas: Star, Snowflake, Factless Fact Table, Fact Constellation','Update to dimension tables','ETL process steps','OLTP vs OLAP','OLAP operations: Slice, Dice, Rollup, Drilldown, Pivot']},
-
-            text-align: center;      {id:'dw2',title:'2 Data Mining: Exploration & Pre-processing',hrs:8,topics:['Data Mining Task Primitives','Architecture','KDD process','Issues in Data Mining','Applications','Types of Attributes','Statistical Description of Data','Data Visualization','Data Preprocessing: Summarization, Cleaning, Integration & transformation, Data reduction, Discretization, Concept hierarchy generation']},
-
-        }      {id:'dw3',title:'3 Classification',hrs:6,topics:['Basic Concepts','Decision Tree Induction','Naive Bayesian Classification','Accuracy and Error measures','Evaluating Accuracy: Holdout & Random Subsampling, Cross Validation, Bootstrap']},
-
-        .unit {      {id:'dw4',title:'4 Clustering',hrs:6,topics:['Types of data in Cluster analysis','Partitioning Methods (k-Means, k-Medoids)','Hierarchical Methods (Agglomerative, Divisive)']},
-
-            margin-bottom: 20px;      {id:'dw5',title:'5 Mining frequent patterns and associations',hrs:6,topics:['Market Basket Analysis','Frequent Item sets','Closed Item sets','Association Rule','Apriori Algorithm','Efficiency improvements','Frequent Pattern Mining without candidates','Multilevel & Multidimensional Association Rules']},
-
-            padding: 15px;      {id:'dw6',title:'6 Web Mining',hrs:5,topics:['Web Content Mining: Crawlers, Harvest System, Virtual Web View, Personalization','Web Structure Mining: Page Rank','Web Usage Mining']}
-
-            background-color: #f8f9fa;    ];
-
-            border-radius: 5px;    const STORAGE_KEY='dwm_syllabus_v1';
-
-        }    function build(){const c=document.getElementById('syllabusList');MODULES.forEach(mod=>{const s=document.createElement('section');s.className='module';s.innerHTML=`<h3>${mod.title} (${String(mod.hrs).padStart(2,'0')} hrs)</h3>`;const ul=document.createElement('ul');mod.topics.forEach((t,i)=>{const id=`${mod.id}.t${i+1}`;const li=document.createElement('li');li.innerHTML=`<label><input data-id="${id}" type="checkbox"> <div><strong>${t.split(/[:\-–—]/)[0]}</strong><div style="color:#475569">${t}</div></div></label>`;ul.appendChild(li)});s.appendChild(ul);c.appendChild(s)})}
-
-        .unit h2 {    function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(e){return{}}}
-
-            color: #3498db;    function save(s){localStorage.setItem(STORAGE_KEY,JSON.stringify(s))}
-
-            margin-top: 0;    build();const inputs=Array.from(document.querySelectorAll('#syllabusList input[type=checkbox]'));const state=load();inputs.forEach(i=>{const id=i.dataset.id;if(state[id])i.checked=true;i.addEventListener('change',()=>{const s=load();s[id]=i.checked;save(s)})});
-
-        }    document.getElementById('markAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=true;s[i.dataset.id]=true});save(s)});
-
-        .back-button {    document.getElementById('clearAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=false;s[i.dataset.id]=false});save(s)});
-
-            display: inline-block;    document.getElementById('export').addEventListener('click',()=>{const s=load();const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='dwm_progress.json';a.click();URL.revokeObjectURL(url)});
-
-            padding: 10px 20px;    document.getElementById('import').addEventListener('click',()=>document.getElementById('importFile').click());
-
-            background-color: #3498db;    document.getElementById('importFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result);localStorage.setItem(STORAGE_KEY,JSON.stringify(obj));location.reload()}catch(err){alert('Invalid JSON')}};r.readAsText(f)});
-
-            color: white;  </script>
-
-            text-decoration: none;</body>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Directory</a>
-        
-        <h1>Data Warehouse and Mining Syllabus</h1>
-
-        <div class="unit">
-            <h2>Unit 1: Introduction to Data Warehousing</h2>
-            <ul>
-                <li>Data Warehouse Concepts</li>
-                <li>Architecture and Components</li>
-                <li>Data Warehouse Design</li>
-                <li>ETL Processes</li>
-            </ul>
-        </div>
-
-        <div class="unit">
-            <h2>Unit 2: Data Mining Fundamentals</h2>
-            <ul>
-                <li>Data Mining Overview</li>
-                <li>Data Preprocessing</li>
-                <li>Data Quality</li>
-                <li>Data Integration</li>
-            </ul>
-        </div>
-
-        <div class="unit">
-            <h2>Unit 3: Data Mining Techniques</h2>
-            <ul>
-                <li>Association Rules</li>
-                <li>Classification Methods</li>
-                <li>Clustering Algorithms</li>
-                <li>Pattern Recognition</li>
-            </ul>
-        </div>
-
-        <div class="unit">
-            <h2>Unit 4: Advanced Data Mining</h2>
-            <ul>
-                <li>Web Mining</li>
-                <li>Text Mining</li>
-                <li>Social Network Analysis</li>
-                <li>Temporal Data Mining</li>
-            </ul>
-        </div>
-
-        <div class="unit">
-            <h2>Unit 5: Applications and Tools</h2>
-            <ul>
-                <li>Business Intelligence</li>
-                <li>Data Mining Tools</li>
-                <li>Case Studies</li>
-                <li>Emerging Trends</li>
-            </ul>
-        </div>
+  <div class="card">
+    <h1>Data Warehousing & Mining <span class="badge">Syllabus</span></h1>
+    <p>Checklist view for Data Warehousing and Mining syllabus.</p>
+    <div class="controls"><button id="markAll">Mark all</button><button id="clearAll">Clear all</button><button id="export">Export</button><button id="import">Import</button><input id="importFile" type="file" accept="application/json" style="display:none"/></div>
+    <div class="nav-links" style="margin: 16px 0; display: flex; gap: 16px;">
+      <a href="index.html" style="color: #2563eb; text-decoration: none; font-weight: 500;">← Back to Directory</a>
+      <a href="exam_schedule_web.html" style="color: #2563eb; text-decoration: none; font-weight: 500;">📅 View Exam Schedule</a>
     </div>
+    <div id="syllabusList"></div>
+  </div>
+
+  <script>
+    const MODULES=[
+      {id:'dw1',title:'1 Data Warehousing Fundamentals',hrs:8,topics:['Introduction to Data Warehouse','Data warehouse architecture','Data warehouse vs Data Marts','E-R Modeling vs Dimensional Modeling','Information Package Diagram','Data Warehouse Schemas: Star, Snowflake, Factless Fact Table, Fact Constellation','Update to dimension tables','ETL process steps','OLTP vs OLAP','OLAP operations: Slice, Dice, Rollup, Drilldown, Pivot']},
+      {id:'dw2',title:'2 Data Mining: Exploration & Pre-processing',hrs:8,topics:['Data Mining Task Primitives','Architecture','KDD process','Issues in Data Mining','Applications','Types of Attributes','Statistical Description of Data','Data Visualization','Data Preprocessing: Summarization, Cleaning, Integration & transformation, Data reduction, Discretization, Concept hierarchy generation']},
+      {id:'dw3',title:'3 Classification',hrs:6,topics:['Basic Concepts','Decision Tree Induction','Naive Bayesian Classification','Accuracy and Error measures','Evaluating Accuracy: Holdout & Random Subsampling, Cross Validation, Bootstrap']},
+      {id:'dw4',title:'4 Clustering',hrs:6,topics:['Types of data in Cluster analysis','Partitioning Methods (k-Means, k-Medoids)','Hierarchical Methods (Agglomerative, Divisive)']},
+      {id:'dw5',title:'5 Mining frequent patterns and associations',hrs:6,topics:['Market Basket Analysis','Frequent Item sets','Closed Item sets','Association Rule','Apriori Algorithm','Efficiency improvements','Frequent Pattern Mining without candidates','Multilevel & Multidimensional Association Rules']},
+      {id:'dw6',title:'6 Web Mining',hrs:5,topics:['Web Content Mining: Crawlers, Harvest System, Virtual Web View, Personalization','Web Structure Mining: Page Rank','Web Usage Mining']}
+    ];
+    const STORAGE_KEY='dwm_syllabus_v1';
+    function build(){const c=document.getElementById('syllabusList');MODULES.forEach(mod=>{const s=document.createElement('section');s.className='module';s.innerHTML=`<h3>${mod.title} (${String(mod.hrs).padStart(2,'0')} hrs)</h3>`;const ul=document.createElement('ul');mod.topics.forEach((t,i)=>{const id=`${mod.id}.t${i+1}`;const li=document.createElement('li');li.innerHTML=`<label><input data-id="${id}" type="checkbox"> <div><strong>${t.split(/[:\-–—]/)[0]}</strong><div style="color:#475569">${t}</div></div></label>`;ul.appendChild(li)});s.appendChild(ul);c.appendChild(s)})}
+    function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(e){return{}}}
+    function save(s){localStorage.setItem(STORAGE_KEY,JSON.stringify(s))}
+    build();const inputs=Array.from(document.querySelectorAll('#syllabusList input[type=checkbox]'));const state=load();inputs.forEach(i=>{const id=i.dataset.id;if(state[id])i.checked=true;i.addEventListener('change',()=>{const s=load();s[id]=i.checked;save(s)})});
+    document.getElementById('markAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=true;s[i.dataset.id]=true});save(s)});
+    document.getElementById('clearAll').addEventListener('click',()=>{const s=load();inputs.forEach(i=>{i.checked=false;s[i.dataset.id]=false});save(s)});
+    document.getElementById('export').addEventListener('click',()=>{const s=load();const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='dwm_progress.json';a.click();URL.revokeObjectURL(url)});
+    document.getElementById('import').addEventListener('click',()=>document.getElementById('importFile').click());
+    document.getElementById('importFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result);localStorage.setItem(STORAGE_KEY,JSON.stringify(obj));location.reload()}catch(err){alert('Invalid JSON')}};r.readAsText(f)});
+  </script>
 </body>
 </html>
