@@ -117,6 +117,119 @@ body {
     z-index: 1;
 }
 
+/* Motivational Quote Banner */
+.quote-banner {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    animation: fadeInDown 0.8s ease-out;
+    transition: all 0.4s ease;
+}
+
+.quote-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 0 2px 2px 0;
+}
+
+.quote-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    border-color: var(--accent-color);
+}
+
+.quote-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    opacity: 0.6;
+    flex-shrink: 0;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+.quote-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.quote-text {
+    font-family: 'Playfair Display', 'Cormorant Garamond', 'Merriweather', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem 0;
+    font-style: italic;
+    transition: opacity 0.4s ease;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.02em;
+}
+
+.quote-author {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0;
+    transition: opacity 0.4s ease;
+    text-align: right;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.quote-refresh {
+    background: var(--accent-gradient);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.quote-refresh:hover {
+    transform: scale(1.1) rotate(180deg);
+    box-shadow: var(--shadow-md);
+}
+
+.quote-refresh:active {
+    transform: scale(0.95);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 /* Header */
 header {
     margin-bottom: 3rem;
@@ -1087,6 +1200,32 @@ h1 {
     
     h1 {
         font-size: 2.5rem;
+    }
+    
+    .quote-banner {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+    
+    .quote-icon {
+        font-size: 2rem;
+    }
+    
+    .quote-text {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    
+    .quote-author {
+        text-align: center;
+        font-size: 0.85rem;
+    }
+    
+    .quote-refresh {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
     
     .header-content {

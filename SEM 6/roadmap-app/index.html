@@ -7,6 +7,7 @@
     <title>Semester 6 Roadmap - Study Hub</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/index.min.js"></script>
@@ -38,6 +39,20 @@
 
     <div class="container">
         <header>
+            <!-- Motivational Quote Banner -->
+            <div class="quote-banner" id="quote-banner">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="quote-content">
+                    <p class="quote-text" id="quote-text">Loading inspiration...</p>
+                    <p class="quote-author" id="quote-author"></p>
+                </div>
+                <button class="quote-refresh" id="quote-refresh" title="Get New Quote">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            
             <div class="header-content">
                 <div>
                     <h1>
@@ -346,6 +361,7 @@
     <!-- Toast Notification -->
     <div id="toast" class="toast"></div>
 
+    <script src="quotes.js"></script>
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>

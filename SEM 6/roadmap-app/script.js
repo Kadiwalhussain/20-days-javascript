@@ -1190,6 +1190,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Motivational Quotes System
+    const quoteText = document.getElementById('quote-text');
+    const quoteAuthor = document.getElementById('quote-author');
+    const quoteRefresh = document.getElementById('quote-refresh');
+    
+    function getRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
+        return motivationalQuotes[randomIndex];
+    }
+    
+    function displayQuote() {
+        const quote = getRandomQuote();
+        quoteText.style.opacity = '0';
+        quoteAuthor.style.opacity = '0';
+        
+        setTimeout(() => {
+            quoteText.textContent = quote.text;
+            quoteAuthor.textContent = `— ${quote.author}`;
+            quoteText.style.opacity = '1';
+            quoteAuthor.style.opacity = '1';
+        }, 300);
+    }
+    
+    quoteRefresh.addEventListener('click', () => {
+        quoteRefresh.style.animation = 'spin 0.6s ease';
+        displayQuote();
+        setTimeout(() => {
+            quoteRefresh.style.animation = '';
+        }, 600);
+    });
+    
+    // Display quote on page load
+    displayQuote();
+    
+    // Change quote every 30 seconds automatically
+    setInterval(displayQuote, 30000);
+
     // Initial Render
     renderDashboard();
     updateTimerDisplay();
