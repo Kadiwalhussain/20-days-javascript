@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester 6 Roadmap - Study Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <button class="fab" id="theme-toggle" title="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="fab" id="timer-btn" title="Study Timer">
+            <i class="fas fa-clock"></i>
+        </button>
+        <button class="fab" id="stats-btn" title="Statistics">
+            <i class="fas fa-chart-line"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>
+                        <span class="gradient-text">Semester 6</span>
+                        <span class="title-accent">Roadmap</span>
+                    </h1>
+                    <p class="subtitle">Your personalized study journey</p>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="overall-progress">0%</div>
+                        <div class="stat-label">Overall Progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="study-streak">0</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="view">
+            <div class="dashboard-controls">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search subjects, modules, or topics..." class="search-input">
+                    <button class="clear-search" id="clear-search" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="in-progress">In Progress</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+            </div>
+            <div class="dashboard-grid" id="subject-list">
+                <!-- Subject cards will be injected here -->
+            </div>
+        </div>
+
+        <!-- Detail View -->
+        <div id="detail-view" class="detail-view view">
+            <div class="detail-header">
+                <button id="back-btn" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back</span>
+                </button>
+                <h2 id="detail-title"></h2>
+            </div>
+            <div class="module-list" id="detail-content">
+                <!-- Modules will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Study Timer Modal -->
+    <div id="timer-modal" class="modal">
+        <div class="modal-content timer-modal">
+            <div class="modal-header">
+                <h3>Study Timer</h3>
+                <button class="modal-close" id="timer-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="timer-display">
+                <div class="timer-circle">
+                    <svg class="timer-svg">
+                        <circle class="timer-bg" cx="120" cy="120" r="110"></circle>
+                        <circle class="timer-progress" cx="120" cy="120" r="110"></circle>
+                    </svg>
+                    <div class="timer-time">
+                        <span id="timer-minutes">25</span>:<span id="timer-seconds">00</span>
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <button class="timer-btn" id="timer-start">
+                        <i class="fas fa-play"></i> Start
+                    </button>
+                    <button class="timer-btn" id="timer-pause" style="display: none;">
+                        <i class="fas fa-pause"></i> Pause
+                    </button>
+                    <button class="timer-btn" id="timer-reset">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+                <div class="timer-presets">
+                    <button class="preset-btn" data-minutes="25">25 min</button>
+                    <button class="preset-btn" data-minutes="45">45 min</button>
+                    <button class="preset-btn" data-minutes="60">60 min</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Modal -->
+    <div id="notes-modal" class="modal">
+        <div class="modal-content notes-modal">
+            <div class="modal-header">
+                <h3 id="notes-title">Notes</h3>
+                <button class="modal-close" id="notes-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="notes-content">
+                <textarea id="notes-textarea" placeholder="Write your notes here..."></textarea>
+                <div class="notes-actions">
+                    <button class="notes-btn" id="notes-save">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                    <button class="notes-btn secondary" id="notes-clear">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Modal -->
+    <div id="stats-modal" class="modal">
+        <div class="modal-content stats-modal">
+            <div class="modal-header">
+                <h3>Your Study Statistics</h3>
+                <button class="modal-close" id="stats-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="stats-content">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-number" id="stat-completed">0</div>
+                        <div class="stat-desc">Topics Completed</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-book"></i></div>
+                        <div class="stat-number" id="stat-total">0</div>
+                        <div class="stat-desc">Total Topics</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                        <div class="stat-number" id="stat-streak">0</div>
+                        <div class="stat-desc">Day Streak</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-number" id="stat-time">0h</div>
+                        <div class="stat-desc">Study Time</div>
+                    </div>
+                </div>
+                <div class="progress-chart">
+                    <h4>Subject Progress</h4>
+                    <div id="subject-progress-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
