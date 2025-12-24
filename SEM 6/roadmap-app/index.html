@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.30.0/index.min.js"></script>
 </head>
 
 <body>
@@ -26,8 +28,11 @@
         <button class="fab" id="timer-btn" title="Study Timer">
             <i class="fas fa-clock"></i>
         </button>
-        <button class="fab" id="stats-btn" title="Statistics">
+        <button class="fab" id="stats-btn" title="Statistics & Analytics">
             <i class="fas fa-chart-line"></i>
+        </button>
+        <button class="fab" id="analytics-btn" title="Advanced Analytics">
+            <i class="fas fa-chart-pie"></i>
         </button>
     </div>
 
@@ -152,6 +157,52 @@
         </div>
     </div>
 
+    <!-- Topic Timer Modal -->
+    <div id="topic-timer-modal" class="modal">
+        <div class="modal-content topic-timer-modal">
+            <div class="modal-header">
+                <h3 id="topic-timer-title">Topic Timer</h3>
+                <button class="modal-close" id="topic-timer-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="topic-timer-content">
+                <div class="topic-timer-display">
+                    <div class="topic-timer-circle">
+                        <svg class="topic-timer-svg">
+                            <circle class="topic-timer-bg" cx="100" cy="100" r="90"></circle>
+                            <circle class="topic-timer-progress" cx="100" cy="100" r="90"></circle>
+                        </svg>
+                        <div class="topic-timer-time">
+                            <span id="topic-timer-minutes">25</span>:<span id="topic-timer-seconds">00</span>
+                        </div>
+                    </div>
+                    <div class="topic-timer-info">
+                        <p id="topic-timer-topic-name"></p>
+                        <p class="topic-timer-total-time">Total time studied: <span id="topic-timer-total">0m</span></p>
+                    </div>
+                </div>
+                <div class="topic-timer-controls">
+                    <button class="topic-timer-btn" id="topic-timer-start">
+                        <i class="fas fa-play"></i> Start
+                    </button>
+                    <button class="topic-timer-btn" id="topic-timer-pause" style="display: none;">
+                        <i class="fas fa-pause"></i> Pause
+                    </button>
+                    <button class="topic-timer-btn" id="topic-timer-reset">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+                <div class="topic-timer-presets">
+                    <button class="topic-preset-btn" data-minutes="15">15 min</button>
+                    <button class="topic-preset-btn" data-minutes="25">25 min</button>
+                    <button class="topic-preset-btn" data-minutes="45">45 min</button>
+                    <button class="topic-preset-btn" data-minutes="60">60 min</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Statistics Modal -->
     <div id="stats-modal" class="modal">
         <div class="modal-content stats-modal">
@@ -187,6 +238,106 @@
                 <div class="progress-chart">
                     <h4>Subject Progress</h4>
                     <div id="subject-progress-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Analytics Modal -->
+    <div id="analytics-modal" class="modal">
+        <div class="modal-content analytics-modal">
+            <div class="modal-header">
+                <h3>Advanced Analytics Dashboard</h3>
+                <button class="modal-close" id="analytics-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="analytics-content">
+                <div class="analytics-tabs">
+                    <button class="analytics-tab active" data-tab="overview">Overview</button>
+                    <button class="analytics-tab" data-tab="subjects">Subjects</button>
+                    <button class="analytics-tab" data-tab="time">Time Analysis</button>
+                    <button class="analytics-tab" data-tab="trends">Trends</button>
+                </div>
+                
+                <div class="analytics-tab-content active" id="tab-overview">
+                    <div class="chart-container">
+                        <h4>Overall Progress Distribution</h4>
+                        <canvas id="progress-pie-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h4>Subject Completion Status</h4>
+                        <canvas id="subject-bar-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="analytics-tab-content" id="tab-subjects">
+                    <div class="chart-container">
+                        <h4>Time Spent per Subject</h4>
+                        <canvas id="subject-time-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h4>Topics Completed per Subject</h4>
+                        <canvas id="topics-completed-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="analytics-tab-content" id="tab-time">
+                    <div class="chart-container">
+                        <h4>Daily Study Time (Last 7 Days)</h4>
+                        <canvas id="daily-time-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h4>Study Time Distribution</h4>
+                        <canvas id="time-distribution-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="analytics-tab-content" id="tab-trends">
+                    <div class="chart-container">
+                        <h4>Progress Over Time</h4>
+                        <canvas id="progress-line-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h4>Weekly Activity Heatmap</h4>
+                        <canvas id="activity-heatmap"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Topic Stats Modal -->
+    <div id="topic-stats-modal" class="modal">
+        <div class="modal-content topic-stats-modal">
+            <div class="modal-header">
+                <h3 id="topic-stats-title">Topic Statistics</h3>
+                <button class="modal-close" id="topic-stats-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="topic-stats-content">
+                <div class="topic-stats-info">
+                    <div class="topic-stat-item">
+                        <span class="topic-stat-label">Total Time Studied:</span>
+                        <span class="topic-stat-value" id="topic-total-time">0m</span>
+                    </div>
+                    <div class="topic-stat-item">
+                        <span class="topic-stat-label">Study Sessions:</span>
+                        <span class="topic-stat-value" id="topic-sessions">0</span>
+                    </div>
+                    <div class="topic-stat-item">
+                        <span class="topic-stat-label">Average Session:</span>
+                        <span class="topic-stat-value" id="topic-avg-session">0m</span>
+                    </div>
+                    <div class="topic-stat-item">
+                        <span class="topic-stat-label">Status:</span>
+                        <span class="topic-stat-value" id="topic-status">Not Started</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h4>Study Time Over Time</h4>
+                    <canvas id="topic-time-chart"></canvas>
                 </div>
             </div>
         </div>
