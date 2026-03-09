@@ -54,6 +54,7 @@ A collection of JavaScript projects completed over 20 days to enhance programmin
 ## Note
 - The `Frontend/` folder is included as a placeholder for future frontend projects.
 - All web development work will be uploaded and maintained in this repository.
+- Videos uploding and all
 
 ---
 
