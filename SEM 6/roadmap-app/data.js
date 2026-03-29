@@ -388,5 +388,90 @@ const semesterData = [
                 ]
             }
         ]
+    },
+    {
+        code: "CSDLO6022",
+        name: "Digital Forensics",
+        description: "Investigating cybercrimes, digital evidence, forensic tools, and network/mobile forensics.",
+        modules: [
+            {
+                id: "csdlo6022-m0",
+                title: "Module 0: Prerequisite",
+                hours: 2,
+                topics: [
+                    "Computer Hardware: Motherboard, CPU, Memory: RAM, Hard Disk Drive (HDD), Solid State Drive (SSD), Optical drive",
+                    "Computer Networks: Introduction CN Terminology: Router, Gateway, OSI and TCP/IP Layers",
+                    "Operating Systems: Role of OS in file management, Memory management utilities, Fundamentals of file systems used in Windows and Linux"
+                ]
+            },
+            {
+                id: "csdlo6022-m1",
+                title: "Module 1: Introduction to Cybercrime and Computer-crime",
+                hours: 4,
+                topics: [
+                    "1.1 Definition and classification of cybercrimes: Definition, Hacking, DoS Attacks, Trojan Attacks, Credit Card Frauds, Cyber Terrorism, Cyber Stalking",
+                    "1.2 Definition and classification of computer crimes: Computer Viruses, Computer Worms",
+                    "1.3 Prevention of Cybercrime: Steps to prevent cybercrime, Hackers, Crackers, Phreakers",
+                    "Self-learning: Steps performed by Hacker"
+                ]
+            },
+            {
+                id: "csdlo6022-m2",
+                title: "Module 2: Introduction to Digital Forensics and Digital Evidences",
+                hours: 5,
+                topics: [
+                    "2.1 Introduction to Digital Forensics: Introduction to Digital Forensics and lifecycle, Principles of Digital Forensic",
+                    "2.2 Introduction to Digital Evidences: Challenging Aspects of Digital Evidence, Scientific Evidence, Presenting Digital Evidence",
+                    "2.3 Digital Investigation Process Models: Physical Model, Staircase Model, Evidence Flow Model",
+                    "Self-learning: Digital Investigation Process Models comparison and its application, Rules of Digital Evidence"
+                ]
+            },
+            {
+                id: "csdlo6022-m3",
+                title: "Module 3: Computer Forensics",
+                hours: 7,
+                topics: [
+                    "3.1 OS File Systems Review: Windows Systems - FAT32 and NTFS, UNIX File Systems, MAC File Systems",
+                    "3.2 Windows OS Artifacts: Registry, Event Logs",
+                    "3.3 Memory Forensics: RAM Forensic Analysis, Creating a RAM Memory Image, Volatility framework, Extracting Information",
+                    "3.4 Computer Forensic Tools: Need of Computer Forensic Tools, Types of Computer Forensic Tools, Tasks performed by Computer Forensic Tools",
+                    "Self-learning: Study of 'The Sleuth Kit' Autopsy tool for Digital Forensics"
+                ]
+            },
+            {
+                id: "csdlo6022-m4",
+                title: "Module 4: Incident Response Management, Live Data Collection and Forensic Duplication",
+                hours: 10,
+                topics: [
+                    "4.1 Incidence Response Methodology: Goals of Incident Response, Finding and Hiring IR Talent",
+                    "4.2 IR Process: Initial Response, Investigation, Remediation, Tracking of Significant Investigative Information",
+                    "4.3 Live Data Collection: Live Data Collection on Microsoft Windows",
+                    "4.4 Forensic Duplication: Forensic Duplicates as Admissible Evidence, Forensic Duplication Tools, Creating a Forensic evidence, Duplicate/Qualified Forensic Duplicate of a Hard Drive",
+                    "Self-learning: Live Data Collection on Unix-Based Systems"
+                ]
+            },
+            {
+                id: "csdlo6022-m5",
+                title: "Module 5: Forensic Tools and Report Writing",
+                hours: 10,
+                topics: [
+                    "5.1 Forensic Image Acquisition in Linux: Acquire an Image with dd Tools, Acquire an Image with Forensic Formats, Preserve Digital Evidence with Cryptography, Image Acquisition over a Network, Acquire Removable Media",
+                    "5.2 Forensic Investigation Report Writing: Reporting Standards, Report Style and Formatting, Report Content and Organization",
+                    "Self-learning: Case study on Report Writing"
+                ]
+            },
+            {
+                id: "csdlo6022-m6",
+                title: "Module 6: Network Forensics and Mobile Forensics",
+                hours: 14,
+                topics: [
+                    "6.1 Network Forensics: Sources of Network-Based Evidence, Principles of Internetworking, Internet Protocol Suite, Evidence Acquisition",
+                    "6.1 Network Forensics (cont.): Analyzing Network Traffic - Packet Flow and Statistical Flow, Network Intrusion Detection and Analysis, Investigation of Routers, Investigation of Firewalls",
+                    "6.2 Mobile Forensics: Mobile Phone Challenges, Mobile phone evidence extraction process, Android OS Architecture, Android File Systems basics",
+                    "6.2 Mobile Forensics (cont.): Types of Investigation, Procedure for Handling an Android Device, Imaging Android USB Mass Storage Devices",
+                    "Self-learning: Elcomsoft iOS Forensic Toolkit, Remo Recover tool for Android Data recovery"
+                ]
+            }
+        ]
     }
 ];

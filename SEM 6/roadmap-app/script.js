@@ -477,6 +477,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const percentage = totalTopics === 0 ? 0 : Math.round((totalCompleted / totalTopics) * 100);
         document.getElementById('overall-progress').textContent = `${percentage}%`;
         document.getElementById('study-streak').textContent = studyStreak;
+        updateNextExamCountdown();
+    }
+
+    // Next exam countdown (synced with Mission Control page)
+    function updateNextExamCountdown() {
+        const el = document.getElementById('next-exam-days');
+        if (!el) return;
+        const examDates = [
+            { name: "SPCC",   ms: new Date("2026-05-11T14:30:00+05:30").getTime() },
+            { name: "CSS",    ms: new Date("2026-05-13T14:30:00+05:30").getTime() },
+            { name: "Mobile", ms: new Date("2026-05-15T14:30:00+05:30").getTime() },
+            { name: "AI",     ms: new Date("2026-05-18T14:30:00+05:30").getTime() },
+            { name: "IoT",    ms: new Date("2026-05-20T14:30:00+05:30").getTime() },
+        ];
+        const now = Date.now();
+        const next = examDates.filter(e => e.ms > now).sort((a, b) => a.ms - b.ms)[0];
+        if (!next) { el.textContent = 'Done!'; return; }
+        const days = Math.ceil((next.ms - now) / 86400000);
+        el.textContent = days + 'd';
+        el.title = days + ' days to ' + next.name;
     }
 
     // Study streak
